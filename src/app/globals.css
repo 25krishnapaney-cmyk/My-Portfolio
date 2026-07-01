@@ -422,13 +422,12 @@ a {
 }
 
 /* ---------- Custom Cursor Styles ---------- */
-.cursor-python {
+.cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
   z-index: 99999;
-  filter: drop-shadow(0 0 6px rgba(55, 118, 171, 0.5)) drop-shadow(0 0 6px rgba(255, 212, 59, 0.4));
 }
 
 .cursor-trail {
@@ -437,11 +436,11 @@ a {
   left: 0;
   width: 36px;
   height: 36px;
-  border: 1.5px solid rgba(55, 118, 171, 0.3);
+  border: 1.5px solid rgba(168, 85, 247, 0.35);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
-  background: radial-gradient(circle, rgba(55, 118, 171, 0.06) 0%, rgba(255, 212, 59, 0.03) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(139, 92, 246, 0.03) 50%, transparent 70%);
 }
 
 /* ---------- Responsive ---------- */
@@ -459,7 +458,7 @@ a {
     --section-padding: clamp(1.5rem, 4vh, 2.5rem);
   }
 
-  .cursor-python,
+  .cursor-dot,
   .cursor-trail {
     display: none !important;
   }
