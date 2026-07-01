@@ -19,18 +19,42 @@ const socialLinks = [
 ];
 
 export default function Contact() {
-  const [formState, setFormState] = useState<'idle' | 'sending' | 'sent'>('idle');
+  const [formState, setFormState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [form, setForm] = useState({ name: '', email: '', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormState('sending');
-    // Simulate send
-    setTimeout(() => {
-      setFormState('sent');
-      setForm({ name: '', email: '', message: '' });
-      setTimeout(() => setFormState('idle'), 3000);
-    }, 1500);
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/25krishnapaney@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _subject: `New Portfolio Message from ${form.name}`,
+          _template: 'box'
+        }),
+      });
+
+      if (response.ok) {
+        setFormState('sent');
+        setForm({ name: '', email: '', message: '' });
+        setTimeout(() => setFormState('idle'), 4000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setFormState('error');
+      // Fallback: open mailto link if API service is blocked
+      window.location.href = `mailto:25krishnapaney@gmail.com?subject=New Portfolio Message from ${encodeURIComponent(form.name)}&body=${encodeURIComponent(form.message + '\n\nFrom: ' + form.email)}`;
+      setTimeout(() => setFormState('idle'), 4000);
+    }
   };
 
   return (
@@ -220,6 +244,12 @@ export default function Contact() {
                   <>
                     <CheckCircle size={16} />
                     Message Sent!
+                  </>
+                )}
+                {formState === 'error' && (
+                  <>
+                    <Mail size={16} />
+                    Opening Email Client...
                   </>
                 )}
               </motion.button>
