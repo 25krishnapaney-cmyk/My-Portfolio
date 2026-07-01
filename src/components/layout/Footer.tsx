@@ -7,7 +7,7 @@ import MagneticButton from '@/components/ui/MagneticButton';
 
 const socialIcons = [
   { icon: GithubIcon, href: 'https://github.com/25krishnapaney-cmyk', label: 'GitHub' },
-  { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/krishna-pandey-58a372273', label: 'LinkedIn' },
+  { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/krishna-pandey-x40020725', label: 'LinkedIn' },
   { icon: InstagramIcon, href: 'https://www.instagram.com/nadylostfilters?igsh=dTcxcXdxamxucW0z', label: 'Instagram' },
   { icon: () => <Mail size={18} />, href: 'https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCJZZQghnZvqNqmgrwrptRSbsXDJprCzgZjjRvqnXSzVcFGzHfNvdlQQLFPPvpHsjCzqvwhL', label: 'Email' },
 ];

@@ -14,7 +14,7 @@ const contactInfo = [
 
 const socialLinks = [
   { icon: GithubIcon, label: 'GitHub', href: 'https://github.com/25krishnapaney-cmyk' },
-  { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/krishna-pandey-58a372273' },
+  { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/krishna-pandey-x40020725' },
   { icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/nadylostfilters?igsh=dTcxcXdxamxucW0z' },
 ];
 
