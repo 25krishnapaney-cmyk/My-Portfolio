@@ -152,29 +152,38 @@ export default function Projects() {
                     )}
                   </div>
 
-                  {/* Centered GitHub & Demo Links moved from upper right corner to bottom */}
+                  {/* Centered GitHub & Demo Links or Coming Soon Badge */}
                   <div className="flex items-center justify-center gap-4 pt-1">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-tertiary)] hover:text-white transition-colors group/link"
-                      >
-                        <GithubIcon size={15} className="group-hover/link:scale-110 transition-transform" />
-                        <span>Code</span>
-                      </a>
-                    )}
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-tertiary)] hover:text-[var(--accent-cyan)] transition-colors group/link"
-                      >
-                        <ExternalLink size={15} className="group-hover/link:scale-110 transition-transform" />
-                        <span>Live Demo</span>
-                      </a>
+                    {!project.github && !project.demo ? (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-purple-500/20 to-cyan-500/20 border border-purple-500/30 text-[var(--accent-cyan)] shadow-sm">
+                        <Sparkles size={13} className="animate-pulse" />
+                        <span>Work in Progress — Coming Soon!</span>
+                      </span>
+                    ) : (
+                      <>
+                        {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-tertiary)] hover:text-white transition-colors group/link"
+                          >
+                            <GithubIcon size={15} className="group-hover/link:scale-110 transition-transform" />
+                            <span>Code</span>
+                          </a>
+                        )}
+                        {project.demo && (
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-tertiary)] hover:text-[var(--accent-cyan)] transition-colors group/link"
+                          >
+                            <ExternalLink size={15} className="group-hover/link:scale-110 transition-transform" />
+                            <span>Live Demo</span>
+                          </a>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>

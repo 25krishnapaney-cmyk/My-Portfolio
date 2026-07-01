@@ -90,6 +90,7 @@ export interface Achievement {
   icon: string;
   category: string;
   year: string;
+  url?: string;
 }
 
 export interface Certification {
