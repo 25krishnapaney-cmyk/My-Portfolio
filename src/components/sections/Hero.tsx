@@ -112,8 +112,8 @@ export default function Hero() {
               />
 
               {/* 3D Glass Card Wrapper */}
-              <GlassCard 
-                className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px] rounded-3xl overflow-hidden cursor-pointer mx-auto" 
+              <GlassCard
+                className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px] rounded-3xl overflow-hidden cursor-pointer mx-auto"
                 padding="p-1"
                 hover={true}
                 glow={true}
