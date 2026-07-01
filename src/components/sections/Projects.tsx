@@ -112,8 +112,8 @@ export default function Projects() {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
           {filteredProjects.map((project, i) => (
-            <div key={project.slug} className="project-card-wrapper" style={{ perspective: '1200px' }}>
-              <div className="glass-card h-full flex flex-col p-5 sm:p-6 md:p-8 relative overflow-hidden group rounded-2xl hover:-translate-y-2 transition-transform duration-500">
+            <div key={project.slug} className="project-card-wrapper h-full flex flex-col" style={{ perspective: '1200px' }}>
+              <div className="glass-card h-full w-full flex flex-col justify-between p-5 sm:p-6 md:p-8 relative overflow-hidden group rounded-2xl hover:-translate-y-2 transition-all duration-500">
                 
                 {/* Glow Background Effect on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-purple)]/5 to-[var(--accent-cyan)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -157,17 +157,17 @@ export default function Projects() {
                 </div>
 
                 {/* Tech Stack Footer */}
-                <div className="relative z-10 mt-auto pt-6 border-t" style={{ borderColor: 'var(--border-glass)' }}>
-                  <div className="flex flex-wrap gap-2">
+                <div className="relative z-10 w-full mt-6 pt-6 border-t border-white/10">
+                  <div className="flex flex-wrap items-center gap-2">
                     {project.technologies.slice(0, 4).map(tech => (
-                      <span key={tech} className="text-xs font-medium px-2.5 py-1 rounded-md border transition-colors glass-subtle" style={{ color: 'var(--text-tertiary)', borderColor: 'var(--border-subtle)' }}>
+                      <div key={tech} className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 border border-white/15 text-[var(--text-primary)] shadow-sm hover:border-white/30 hover:bg-white/15 transition-all duration-300">
                         {tech}
-                      </span>
+                      </div>
                     ))}
                     {project.technologies.length > 4 && (
-                      <span className="text-xs font-medium px-2.5 py-1 rounded-md border glass-subtle" style={{ color: 'var(--text-tertiary)', borderColor: 'var(--border-subtle)' }}>
+                      <div className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 border border-white/15 text-[var(--text-primary)] shadow-sm hover:border-white/30 hover:bg-white/15 transition-all duration-300">
                         +{project.technologies.length - 4}
-                      </span>
+                      </div>
                     )}
                   </div>
                 </div>

@@ -79,13 +79,12 @@ export default function Experience() {
                 {exp.technologies && (
                   <div className="flex flex-wrap justify-center gap-2">
                     {exp.technologies.map((tech) => (
-                      <span
+                      <div
                         key={tech}
-                        className="px-3 py-1 rounded-full text-xs font-medium glass-subtle"
-                        style={{ color: 'var(--text-tertiary)' }}
+                        className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 border border-white/15 text-[var(--text-primary)] shadow-sm hover:border-white/30 hover:bg-white/15 transition-all duration-300"
                       >
                         {tech}
-                      </span>
+                      </div>
                     ))}
                   </div>
                 )}
