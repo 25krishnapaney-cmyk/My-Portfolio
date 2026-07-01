@@ -61,7 +61,7 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-end pointer-events-auto">
           {/* Right side controls */}
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col-reverse md:flex-row items-center gap-2.5 md:gap-3">
             {/* Mobile Menu Button */}
             <motion.button
               className="w-11 h-11 rounded-full glass-subtle flex items-center justify-center cursor-pointer"

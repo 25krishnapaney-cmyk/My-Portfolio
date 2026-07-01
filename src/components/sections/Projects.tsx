@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,6 +12,41 @@ if (typeof window !== 'undefined') {
 
 export default function Projects() {
   const containerRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.defaultMuted = true;
+    video.muted = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', 'true');
+
+    const attemptPlay = () => {
+      if (video.paused) {
+        video.play().catch(() => {
+          // Autoplay blocked by mobile OS / Low Power Mode until user gesture
+        });
+      }
+    };
+
+    attemptPlay();
+
+    const handleUserGesture = () => {
+      attemptPlay();
+    };
+
+    window.addEventListener('touchstart', handleUserGesture, { passive: true });
+    window.addEventListener('scroll', handleUserGesture, { passive: true });
+    window.addEventListener('click', handleUserGesture, { passive: true });
+
+    return () => {
+      window.removeEventListener('touchstart', handleUserGesture);
+      window.removeEventListener('scroll', handleUserGesture);
+      window.removeEventListener('click', handleUserGesture);
+    };
+  }, []);
 
   useGSAP(() => {
     const banner = gsap.utils.toArray<HTMLElement>('.coming-soon-banner');
@@ -74,13 +109,20 @@ export default function Projects() {
                 <div className="relative w-full rounded-3xl overflow-hidden border border-purple-500/40 shadow-[0_0_50px_rgba(168,85,247,0.25)] aspect-video bg-neutral-950 flex items-center justify-center z-10">
                   {/* Playing Video */}
                   <video
+                    ref={videoRef}
                     src="/working.mp4"
                     autoPlay
                     loop
                     muted
                     playsInline
+                    preload="auto"
                     suppressHydrationWarning
-                    className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105"
+                    onClick={() => {
+                      if (videoRef.current?.paused) {
+                        videoRef.current.play();
+                      }
+                    }}
+                    className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105 cursor-pointer"
                   />
                 </div>
               </div>
