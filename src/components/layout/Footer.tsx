@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { Mail, Heart } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, InstagramIcon } from '@/components/ui/BrandIcons';
-import MagneticButton from '@/components/ui/MagneticButton';
 
 const socialIcons = [
   { icon: GithubIcon, href: 'https://github.com/25krishnapaney-cmyk', label: 'GitHub' },
@@ -35,22 +34,19 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex items-center gap-3">
             {socialIcons.map(({ icon: Icon, href, label }) => (
-              <MagneticButton key={label}>
-                <motion.a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full glass-subtle flex items-center justify-center"
-                  style={{ color: 'var(--text-tertiary)' }}
-                  whileHover={{
-                    scale: 1.15,
-                  }}
-                  whileTap={{ scale: 0.9 }}
-                  aria-label={label}
-                >
-                  <Icon size={18} />
-                </motion.a>
-              </MagneticButton>
+              <motion.a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full glass-subtle flex items-center justify-center transition-colors hover:border-purple-500/40 hover:bg-white/5"
+                style={{ color: 'var(--text-primary)' }}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label={label}
+              >
+                <Icon size={18} />
+              </motion.a>
             ))}
           </div>
         </div>
