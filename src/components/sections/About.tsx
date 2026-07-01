@@ -27,21 +27,20 @@ export default function About() {
               </p>
 
               <p className="text-base sm:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              Beyond development, I'm equally passionate about <strong style={{ color: 'var(--text-primary)' }}>Gaming creating 
-                tech-focused content, and streaming.</strong>,
-              I love sharing my learning journey, exploring the latest innovations, and connecting with people who are 
+              Beyond development, I'm equally passionate about <strong style={{ color: 'var(--text-primary)' }}>gaming, creating 
+                tech-focused content, and streaming.</strong> I love sharing my learning journey, exploring the latest innovations, and connecting with people who are 
               just as excited about technology as I am. These hobbies fuel my creativity and inspire me to approach 
               challenges from different perspectives.
               </p>
 
-              <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              <p className="text-base sm:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                 <strong style={{ color: 'var(--text-primary)' }}>My mission</strong> is to bridge the gap between
                 cutting-edge AI research and practical applications. I believe that technology should be beautiful,
                 accessible, and transformative. Every project I build is guided by this philosophy — from AI-powered
                 learning tools to elegant developer dashboards.
               </p>
 
-              <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              <p className="text-base sm:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                 <strong style={{ color: 'var(--text-primary)' }}>Looking ahead</strong>, I aspire to build an AI-first
                 startup that solves real-world problems at scale. I&apos;m deeply interested in LLMs, agentic AI systems,
                 computer vision, and the future of human-computer interaction. When I&apos;m not coding, you&apos;ll find me
