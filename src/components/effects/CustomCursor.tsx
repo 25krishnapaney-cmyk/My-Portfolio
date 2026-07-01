@@ -69,9 +69,9 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Python Logo Cursor */}
+      {/* Primary Dot Cursor */}
       <motion.div
-        className="cursor-python"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] w-2.5 h-2.5 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.8)]"
         style={{
           x: cursorX,
           y: cursorY,
@@ -80,46 +80,26 @@ export default function CustomCursor() {
           opacity: isVisible ? 1 : 0,
         }}
         animate={{
-          scale: isPressed ? 0.7 : isHovering ? 1.4 : 1,
-          rotate: isPressed ? -15 : isHovering ? 12 : 0,
+          scale: isPressed ? 0.6 : isHovering ? 1.5 : 1,
         }}
-        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 110 110"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Blue half (top-left) */}
-          <path
-            d="M54.919 0C26.737 0 28.456 11.76 28.456 11.76l.03 12.19h26.934v3.66H17.358S0 25.222 0 53.766c0 28.544 15.148 27.535 15.148 27.535h9.044V68.696s-.488-15.148 14.906-15.148h25.67s14.422.233 14.422-13.942V14.62S81.574 0 54.919 0zM40.326 8.44a4.671 4.671 0 110 9.342 4.671 4.671 0 010-9.342z"
-            fill="#3776AB"
-          />
-          {/* Yellow half (bottom-right) */}
-          <path
-            d="M55.081 110c28.182 0 26.463-11.76 26.463-11.76l-.03-12.19H54.58v-3.66h38.062S110 84.778 110 56.234c0-28.544-15.148-27.535-15.148-27.535h-9.044v12.605s.488 15.148-14.906 15.148h-25.67S30.81 56.219 30.81 70.394v24.986S28.426 110 55.081 110zm14.593-8.44a4.671 4.671 0 110-9.342 4.671 4.671 0 010 9.342z"
-            fill="#FFD43B"
-          />
-        </svg>
-      </motion.div>
+        transition={{ duration: 0.15, ease: 'easeOut' }}
+      />
 
-      {/* Trailing glow ring */}
+      {/* Trailing Glow Ring */}
       <motion.div
-        className="cursor-trail"
+        className="fixed top-0 left-0 pointer-events-none z-[9998] w-8 h-8 rounded-full border border-purple-500/40 bg-purple-500/5 backdrop-blur-[1px]"
         style={{
           x: trailX,
           y: trailY,
           translateX: '-50%',
           translateY: '-50%',
-          opacity: isVisible ? 1 : 0,
+          opacity: isVisible ? (isHovering ? 0.7 : 0.3) : 0,
         }}
         animate={{
-          scale: isPressed ? 0.5 : isHovering ? 1.6 : 1,
-          opacity: isVisible ? (isHovering ? 0.6 : 0.3) : 0,
+          scale: isPressed ? 0.8 : isHovering ? 1.6 : 1,
+          borderColor: isHovering ? 'rgba(168,85,247,0.8)' : 'rgba(168,85,247,0.4)',
         }}
-        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
       />
     </>
   );
