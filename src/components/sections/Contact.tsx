@@ -27,35 +27,35 @@ export default function Contact() {
           title="Let&apos;s Connect"
         />
 
-        <div className="max-w-lg mx-auto">
+        <div className="flex justify-center items-center w-full max-w-md mx-auto px-4">
           {/* Contact Info */}
-          <ScrollReveal reveal3dType="unfold" direction="left">
-            <div className="glass-card h-full" style={{ padding: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
+          <ScrollReveal className="w-full" reveal3dType="unfold" direction="up">
+            <div className="glass-card w-full flex flex-col items-center text-center" style={{ padding: 'clamp(2rem, 5vw, 3rem)' }}>
               <h3
-                className="text-lg font-semibold mb-6"
+                className="text-xl font-bold mb-6"
                 style={{ color: 'var(--text-primary)' }}
               >
                 Get in Touch
               </h3>
 
-              <div className="space-y-4 mb-8">
+              <div className="space-y-4 w-full mb-8 flex flex-col items-center">
                 {contactInfo.map(({ icon: Icon, label, value, href }) => (
                   <a
                     key={label}
                     href={href}
-                    className="flex items-center gap-3 group"
+                    className="flex flex-col items-center gap-2 group p-4 rounded-2xl glass-subtle w-full transition-all duration-300 hover:border-purple-500/40 hover:bg-purple-500/5"
                   >
                     <span
-                      className="w-10 h-10 rounded-xl glass-subtle flex items-center justify-center transition-colors group-hover:text-purple-500"
+                      className="w-12 h-12 rounded-xl glass-subtle flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:text-purple-400"
                       style={{ color: 'var(--text-tertiary)' }}
                     >
-                      <Icon size={18} />
+                      <Icon size={22} />
                     </span>
                     <div>
-                      <p className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-0.5" style={{ color: 'var(--text-tertiary)' }}>
                         {label}
                       </p>
-                      <p className="text-sm font-medium break-all" style={{ color: 'var(--text-primary)' }}>
+                      <p className="text-sm sm:text-base font-medium break-all" style={{ color: 'var(--text-primary)' }}>
                         {value}
                       </p>
                     </div>
@@ -64,25 +64,25 @@ export default function Contact() {
               </div>
 
               <h4
-                className="text-sm font-semibold mb-3"
-                style={{ color: 'var(--text-primary)' }}
+                className="text-xs font-semibold uppercase tracking-wider mb-4"
+                style={{ color: 'var(--text-tertiary)' }}
               >
                 Follow Me
               </h4>
-              <div className="flex gap-2">
+              <div className="flex justify-center gap-3">
                 {socialLinks.map(({ icon: Icon, label, href }) => (
                   <motion.a
                     key={label}
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl glass-subtle flex items-center justify-center"
+                    className="w-12 h-12 rounded-xl glass-subtle flex items-center justify-center transition-colors hover:border-purple-500/40 hover:bg-purple-500/5"
                     style={{ color: 'var(--text-tertiary)' }}
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.15, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
                     aria-label={label}
                   >
-                    <Icon size={18} />
+                    <Icon size={20} />
                   </motion.a>
                 ))}
               </div>
