@@ -60,34 +60,27 @@ export default function Projects() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover opacity-75 group-hover:opacity-90 transition-all duration-700 transform group-hover:scale-105"
+                  className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105"
                 />
 
-                {/* Overlay with "Coming Soon" written directly on top */}
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/40 to-neutral-950/30 flex flex-col items-center justify-center p-4 sm:p-8 md:p-12 text-center transition-all duration-500">
-                  <div className="glass-subtle px-6 py-5 sm:px-10 sm:py-8 rounded-3xl border border-purple-500/30 shadow-[0_0_35px_rgba(168,85,247,0.3)] backdrop-blur-md transform group-hover:scale-[1.02] transition-transform duration-500 max-w-2xl mx-auto">
+                {/* Overlay positioned at the TOP of the video */}
+                <div className="absolute inset-x-0 top-0 flex flex-col items-center justify-start p-4 sm:p-6 md:p-8 text-center pointer-events-none z-10">
+                  <div className="glass px-6 py-4 sm:px-8 sm:py-6 rounded-3xl border border-purple-500/30 shadow-[0_0_35px_rgba(168,85,247,0.4)] backdrop-blur-md transform group-hover:scale-[1.02] transition-transform duration-500 max-w-xl mx-auto pointer-events-auto">
                     
                     {/* Animated Icons */}
-                    <div className="flex items-center justify-center gap-3 text-2xl sm:text-4xl mb-3 select-none">
+                    <div className="flex items-center justify-center gap-3 text-2xl sm:text-3xl mb-2 select-none">
                       <span className="animate-bounce inline-block" style={{ animationDelay: '0s' }}>🚧</span>
-                      <span className="animate-bounce inline-block" style={{ animationDelay: '0.15s' }}>⚡</span>
-                      <span className="animate-bounce inline-block" style={{ animationDelay: '0.3s' }}>✨</span>
                     </div>
 
                     {/* Coming Soon Title */}
-                    <h3 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-3 sm:mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg">
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg">
                       Coming Soon...
                     </h3>
 
-                    {/* Subtitle */}
-                    <p className="text-xs sm:text-sm md:text-base font-medium leading-relaxed text-neutral-200 max-w-lg mx-auto mb-5 drop-shadow">
-                      My portfolio projects section is currently under construction! I am actively working on deploying cutting-edge AI agent workflows, cloud infrastructure tools, and interactive web applications. Check back soon!
-                    </p>
-
                     {/* Status Badge */}
-                    <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold bg-purple-500/20 border border-purple-500/40 text-purple-200 shadow-inner">
+                    <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-purple-500/20 border border-purple-500/40 text-purple-200 shadow-inner">
                       <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
-                      <span>Under Active Development</span>
+                      <span>Cooking</span>
                     </div>
                   </div>
                 </div>
