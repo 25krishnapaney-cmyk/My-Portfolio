@@ -103,13 +103,7 @@ export default function Contact() {
                     ))}
                   </div>
                 </div>
-
-                {/* Glowing purple line along bottom edge of card */}
-                <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent blur-[0.5px] opacity-75 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_20px_rgba(168,85,247,0.8)] pointer-events-none" />
               </div>
-
-              {/* Glowing purple line reflection below card */}
-              <div className="w-4/5 mx-auto h-1.5 rounded-full bg-gradient-to-r from-transparent via-purple-500 to-transparent blur-[1px] shadow-[0_0_20px_rgba(168,85,247,0.8),0_0_35px_rgba(139,92,246,0.6)] mt-4 pointer-events-none opacity-80 group-hover:opacity-100 transition-all duration-300" />
             </div>
           </ScrollReveal>
         </div>
