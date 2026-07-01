@@ -79,12 +79,12 @@ export default function Experience() {
                 {exp.technologies && (
                   <div className="flex flex-wrap justify-center gap-2">
                     {exp.technologies.map((tech) => (
-                      <div
+                      <span
                         key={tech}
-                        className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 border border-white/15 text-[var(--text-primary)] shadow-sm hover:border-white/30 hover:bg-white/15 transition-all duration-300"
+                        className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:border-white/20 transition-all duration-300"
                       >
                         {tech}
-                      </div>
+                      </span>
                     ))}
                   </div>
                 )}

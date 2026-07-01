@@ -35,46 +35,35 @@ export default function Projects() {
   useGSAP(() => {
     const cards = gsap.utils.toArray<HTMLElement>('.project-card-wrapper');
     
-    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const isTouchOrMobile = typeof window !== 'undefined' && (window.innerWidth <= 1024 || 'ontouchstart' in window);
 
     // Set initial 3D rotation (locked state)
     gsap.set(cards, {
-      rotateY: isMobile ? 0 : 90,
-      scale: isMobile ? 1 : 0.8,
+      rotateY: isTouchOrMobile ? 0 : 60,
+      scale: isTouchOrMobile ? 0.95 : 0.85,
       opacity: 0,
-      y: isMobile ? 30 : 0,
-      filter: isMobile ? 'none' : 'blur(10px)',
-      transformPerspective: isMobile ? 'none' : 1200,
+      y: isTouchOrMobile ? 30 : 0,
+      filter: isTouchOrMobile ? 'none' : 'blur(10px)',
+      transformPerspective: isTouchOrMobile ? 'none' : 1200,
     });
 
-    // Create a ScrollTrigger for each card to "unlock" it
+    // Create a ScrollTrigger for each card to "unlock" it once
     cards.forEach((card, index) => {
       ScrollTrigger.create({
         trigger: card,
-        start: isMobile ? 'top 92%' : 'top 85%',
+        start: isTouchOrMobile ? 'top 95%' : 'top 85%',
+        once: true,
         onEnter: () => {
           gsap.to(card, {
             rotateY: 0,
             scale: 1,
             opacity: 1,
             y: 0,
-            filter: isMobile ? 'none' : 'blur(0px)',
-            duration: isMobile ? 0.5 : 0.8,
-            ease: isMobile ? 'power2.out' : 'back.out(1.5)',
+            filter: 'none',
+            duration: isTouchOrMobile ? 0.5 : 0.8,
+            ease: isTouchOrMobile ? 'power2.out' : 'back.out(1.2)',
           });
         },
-        // Re-lock if scrolling up past it
-        onLeaveBack: () => {
-          if (isMobile) return;
-          gsap.to(card, {
-            rotateY: -90,
-            scale: 0.8,
-            opacity: 0,
-            filter: 'blur(10px)',
-            duration: 0.5,
-            ease: 'power2.in',
-          });
-        }
       });
     });
 
@@ -115,61 +104,77 @@ export default function Projects() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
           {filteredProjects.map((project, i) => (
             <div key={project.slug} className="project-card-wrapper h-full flex flex-col" style={{ perspective: '1200px' }}>
-              <div className="glass-card h-full w-full flex flex-col justify-between p-5 sm:p-6 md:p-8 relative overflow-hidden group rounded-2xl hover:-translate-y-2 transition-all duration-500">
+              <div className="glass-card h-full w-full flex flex-col justify-between p-5 sm:p-6 relative overflow-hidden group rounded-2xl hover:-translate-y-2 transition-all duration-500 text-center">
                 
                 {/* Glow Background Effect on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-purple)]/5 to-[var(--accent-cyan)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                {/* Header */}
-                <div className="flex justify-between items-start mb-6 relative z-10">
+                {/* Top Centered Category Icon (matching Achievements reference style) */}
+                <div className="flex justify-center mb-4 relative z-10">
                   <div className="w-12 h-12 rounded-xl glass-subtle flex items-center justify-center text-2xl shadow-inner border border-white/10 group-hover:scale-110 transition-transform duration-300">
                     {getCategoryIcon(project.category)}
                   </div>
-                  
-                  <div className="flex gap-3">
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-[var(--text-tertiary)] hover:text-white transition-colors">
-                        <GithubIcon size={20} />
-                      </a>
-                    )}
-                    {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-[var(--text-tertiary)] hover:text-[var(--accent-cyan)] transition-colors">
-                        <ExternalLink size={20} />
-                      </a>
-                    )}
-                  </div>
                 </div>
 
-                {/* Content */}
-                <div className="relative z-10 flex-grow">
-                  <div className="flex items-center gap-3 mb-3">
-                    <h3 className="text-xl font-bold group-hover:text-[var(--accent-purple)] transition-colors" style={{ color: 'var(--text-primary)' }}>
+                {/* Centered Content */}
+                <div className="relative z-10 flex-grow mb-5">
+                  <div className="flex items-center justify-center gap-2 mb-2 flex-wrap">
+                    <h3 className="text-lg sm:text-xl font-bold group-hover:text-[var(--accent-purple)] transition-colors" style={{ color: 'var(--text-primary)' }}>
                       {project.title}
                     </h3>
                     {project.featured && (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-[var(--accent-purple)] to-[var(--accent-cyan)] text-white">
+                      <span className="px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-gradient-to-r from-[var(--accent-purple)] to-[var(--accent-cyan)] text-white">
                         Featured
                       </span>
                     )}
                   </div>
                   
-                  <p className="text-sm mb-6 leading-relaxed transition-colors" style={{ color: 'var(--text-secondary)' }}>
+                  <p className="text-xs sm:text-sm leading-relaxed transition-colors" style={{ color: 'var(--text-secondary)' }}>
                     {project.shortDescription}
                   </p>
                 </div>
 
-                {/* Tech Stack Footer */}
-                <div className="relative z-10 w-full mt-6 pt-6 border-t border-white/10">
-                  <div className="flex flex-wrap items-center gap-2">
+                {/* Tech Stack Footer - Perfectly centered and formatted like Achievements */}
+                <div className="relative z-10 w-full mt-auto pt-4 border-t border-white/5">
+                  <div className="flex flex-wrap items-center justify-center gap-1.5 mb-3">
                     {project.technologies.slice(0, 4).map(tech => (
-                      <div key={tech} className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 border border-white/15 text-[var(--text-primary)] shadow-sm hover:border-white/30 hover:bg-white/15 transition-all duration-300">
+                      <span
+                        key={tech}
+                        className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:border-white/20 transition-all duration-300"
+                      >
                         {tech}
-                      </div>
+                      </span>
                     ))}
                     {project.technologies.length > 4 && (
-                      <div className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-white/10 border border-white/15 text-[var(--text-primary)] shadow-sm hover:border-white/30 hover:bg-white/15 transition-all duration-300">
+                      <span className="inline-block px-2 py-0.5 rounded-full text-[11px] font-medium text-[var(--text-tertiary)]">
                         +{project.technologies.length - 4}
-                      </div>
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Centered GitHub & Demo Links moved from upper right corner to bottom */}
+                  <div className="flex items-center justify-center gap-4 pt-1">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-tertiary)] hover:text-white transition-colors group/link"
+                      >
+                        <GithubIcon size={15} className="group-hover/link:scale-110 transition-transform" />
+                        <span>Code</span>
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-tertiary)] hover:text-[var(--accent-cyan)] transition-colors group/link"
+                      >
+                        <ExternalLink size={15} className="group-hover/link:scale-110 transition-transform" />
+                        <span>Live Demo</span>
+                      </a>
                     )}
                   </div>
                 </div>
