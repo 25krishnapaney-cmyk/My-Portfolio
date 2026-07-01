@@ -5,10 +5,10 @@ import { Mail, Heart } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, InstagramIcon } from '@/components/ui/BrandIcons';
 
 const socialIcons = [
-  { icon: GithubIcon, href: 'https://github.com/25krishnapaney-cmyk', label: 'GitHub' },
-  { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/krishna-pandey-x40020725', label: 'LinkedIn' },
-  { icon: InstagramIcon, href: 'https://www.instagram.com/nadylostfilters?igsh=dTcxcXdxamxucW0z', label: 'Instagram' },
-  { icon: () => <Mail size={18} />, href: 'https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCJZZQghnZvqNqmgrwrptRSbsXDJprCzgZjjRvqnXSzVcFGzHfNvdlQQLFPPvpHsjCzqvwhL', label: 'Email' },
+  { icon: GithubIcon, href: process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/25krishnapaney-cmyk', label: 'GitHub' },
+  { icon: LinkedinIcon, href: process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://www.linkedin.com/in/krishna-pandey-x40020725', label: 'LinkedIn' },
+  { icon: InstagramIcon, href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://www.instagram.com/nadylostfilters?igsh=dTcxcXdxamxucW0z', label: 'Instagram' },
+  { icon: () => <Mail size={18} />, href: `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || '25krishnapaney@gmail.com'}`, label: 'Email' },
 ];
 
 export default function Footer() {
