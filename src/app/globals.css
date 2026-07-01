@@ -422,6 +422,15 @@ a {
 }
 
 /* ---------- Custom Cursor Styles ---------- */
+.cursor-python {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  filter: drop-shadow(0 0 6px rgba(55, 118, 171, 0.5)) drop-shadow(0 0 6px rgba(255, 212, 59, 0.4));
+}
+
 .cursor-dot {
   position: fixed;
   top: 0;
@@ -458,6 +467,7 @@ a {
     --section-padding: clamp(1.5rem, 4vh, 2.5rem);
   }
 
+  .cursor-python,
   .cursor-dot,
   .cursor-trail {
     display: none !important;

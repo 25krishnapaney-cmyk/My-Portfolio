@@ -69,9 +69,9 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Sleek Dot Cursor */}
+      {/* Python Logo Cursor */}
       <motion.div
-        className="cursor-dot"
+        className="cursor-python"
         style={{
           x: cursorX,
           y: cursorY,
@@ -80,11 +80,29 @@ export default function CustomCursor() {
           opacity: isVisible ? 1 : 0,
         }}
         animate={{
-          scale: isPressed ? 0.7 : isHovering ? 1.5 : 1,
+          scale: isPressed ? 0.7 : isHovering ? 1.4 : 1,
+          rotate: isPressed ? -15 : isHovering ? 12 : 0,
         }}
-        transition={{ duration: 0.15, ease: 'easeOut' }}
+        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="w-2.5 h-2.5 rounded-full bg-purple-400 shadow-[0_0_12px_rgba(168,85,247,0.8)]" />
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 110 110"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Blue half (top-left) */}
+          <path
+            d="M54.919 0C26.737 0 28.456 11.76 28.456 11.76l.03 12.19h26.934v3.66H17.358S0 25.222 0 53.766c0 28.544 15.148 27.535 15.148 27.535h9.044V68.696s-.488-15.148 14.906-15.148h25.67s14.422.233 14.422-13.942V14.62S81.574 0 54.919 0zM40.326 8.44a4.671 4.671 0 110 9.342 4.671 4.671 0 010-9.342z"
+            fill="#3776AB"
+          />
+          {/* Yellow half (bottom-right) */}
+          <path
+            d="M55.081 110c28.182 0 26.463-11.76 26.463-11.76l-.03-12.19H54.58v-3.66h38.062S110 84.778 110 56.234c0-28.544-15.148-27.535-15.148-27.535h-9.044v12.605s.488 15.148-14.906 15.148h-25.67S30.81 56.219 30.81 70.394v24.986S28.426 110 55.081 110zm14.593-8.44a4.671 4.671 0 110-9.342 4.671 4.671 0 010 9.342z"
+            fill="#FFD43B"
+          />
+        </svg>
       </motion.div>
 
       {/* Trailing glow ring */}
