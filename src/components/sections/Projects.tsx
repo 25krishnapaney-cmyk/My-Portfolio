@@ -70,7 +70,6 @@ export default function Projects() {
                 {/* Background Glow Effect */}
                 <div className="absolute -top-32 -left-32 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
                 <div className="absolute -bottom-32 -right-32 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
-
                 {/* Playing Video */}
                 <video
                   src="/working.mp4"
@@ -78,6 +77,7 @@ export default function Projects() {
                   loop
                   muted
                   playsInline
+                  suppressHydrationWarning
                   className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105"
                 />
               </div>
