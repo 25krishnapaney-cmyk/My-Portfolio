@@ -20,8 +20,8 @@ const socialLinks = [
 export default function Contact() {
 
   return (
-    <section id="contact" className="section">
-      <div className="container">
+    <section id="contact" className="section min-h-screen flex items-center justify-center">
+      <div className="container flex flex-col items-center justify-center">
         <SectionHeading
           label="Contact"
           title="Let&apos;s Connect"
