@@ -73,13 +73,15 @@ export default function Skills() {
               exit={{ opacity: 0, y: -20, filter: 'blur(8px)' }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              {filteredSkills.map((skill, i) => (
+              {filteredSkills.map((skill, i) => {
+                const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+                return (
                 <motion.div
                   key={skill.name}
-                  initial={{ opacity: 0, scale: 0.8, rotateY: 40, filter: 'blur(8px)' }}
-                  animate={{ opacity: 1, scale: 1, rotateY: 0, filter: 'blur(0px)' }}
-                  transition={{ delay: i * 0.06, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ width: 'clamp(110px, 22vw, 140px)', perspective: 800 }}
+                  initial={isMobile ? { opacity: 0, y: 15 } : { opacity: 0, scale: 0.8, rotateY: 40, filter: 'blur(8px)' }}
+                  animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, scale: 1, rotateY: 0, filter: 'blur(0px)' }}
+                  transition={{ delay: i * 0.04, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ width: 'clamp(110px, 22vw, 140px)', perspective: isMobile ? 'none' : 800 }}
                 >
                   <GlassCard 
                     className="p-4 text-center group cursor-pointer w-full h-full"
@@ -103,7 +105,8 @@ export default function Skills() {
                     </span>
                   </GlassCard>
                 </motion.div>
-              ))}
+                );
+              })}
             </motion.div>
           </AnimatePresence>
         </div>

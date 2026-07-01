@@ -36,36 +36,38 @@ export default function Projects() {
     const cards = gsap.utils.toArray<HTMLElement>('.project-card-wrapper');
     
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-    const rotateAmount = isMobile ? 45 : 90;
 
     // Set initial 3D rotation (locked state)
     gsap.set(cards, {
-      rotateY: rotateAmount,
-      scale: 0.8,
+      rotateY: isMobile ? 0 : 90,
+      scale: isMobile ? 1 : 0.8,
       opacity: 0,
-      filter: 'blur(10px)',
-      transformPerspective: 1200,
+      y: isMobile ? 30 : 0,
+      filter: isMobile ? 'none' : 'blur(10px)',
+      transformPerspective: isMobile ? 'none' : 1200,
     });
 
     // Create a ScrollTrigger for each card to "unlock" it
     cards.forEach((card, index) => {
       ScrollTrigger.create({
         trigger: card,
-        start: 'top 85%',
+        start: isMobile ? 'top 92%' : 'top 85%',
         onEnter: () => {
           gsap.to(card, {
             rotateY: 0,
             scale: 1,
             opacity: 1,
-            filter: 'blur(0px)',
-            duration: 0.8,
-            ease: 'back.out(1.5)',
+            y: 0,
+            filter: isMobile ? 'none' : 'blur(0px)',
+            duration: isMobile ? 0.5 : 0.8,
+            ease: isMobile ? 'power2.out' : 'back.out(1.5)',
           });
         },
         // Re-lock if scrolling up past it
         onLeaveBack: () => {
+          if (isMobile) return;
           gsap.to(card, {
-            rotateY: -rotateAmount,
+            rotateY: -90,
             scale: 0.8,
             opacity: 0,
             filter: 'blur(10px)',

@@ -47,23 +47,25 @@ export default function DynamicBackground() {
     { Icon: Speaker, size: 28, left: '48%', duration: 34, delay: 16 }
   ];
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
   return (
     <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-[var(--bg-primary)]">
 
       {/* Primary Accent Glow */}
       <motion.div
-        className="absolute w-[50vw] h-[50vw] md:w-[600px] md:h-[600px] rounded-full blur-[100px] md:blur-[120px] opacity-40 mix-blend-normal"
+        className="absolute w-[60vw] h-[60vw] md:w-[600px] md:h-[600px] rounded-full blur-[80px] md:blur-[120px] opacity-30 md:opacity-40 mix-blend-normal"
         style={{
           background: 'radial-gradient(circle, var(--accent-purple) 0%, transparent 70%)',
           top: '-10%',
           left: '-10%',
         }}
-        animate={{
+        animate={isMobile ? undefined : {
           x: [0, 100, -50, 0],
           y: [0, -50, 100, 0],
           scale: [1, 1.1, 0.9, 1],
         }}
-        transition={{
+        transition={isMobile ? undefined : {
           duration: 15,
           repeat: Infinity,
           ease: 'linear',
@@ -72,49 +74,50 @@ export default function DynamicBackground() {
 
       {/* Secondary Accent Glow */}
       <motion.div
-        className="absolute w-[40vw] h-[40vw] md:w-[500px] md:h-[500px] rounded-full blur-[80px] md:blur-[100px] opacity-30 mix-blend-normal"
+        className="absolute w-[50vw] h-[50vw] md:w-[500px] md:h-[500px] rounded-full blur-[70px] md:blur-[100px] opacity-25 md:opacity-30 mix-blend-normal"
         style={{
           background: 'radial-gradient(circle, var(--accent-blue) 0%, transparent 70%)',
           bottom: '-10%',
           right: '-5%',
         }}
-        animate={{
+        animate={isMobile ? undefined : {
           x: [0, -120, 60, 0],
           y: [0, 80, -100, 0],
           scale: [1, 1.2, 0.8, 1],
         }}
-        transition={{
+        transition={isMobile ? undefined : {
           duration: 18,
           repeat: Infinity,
           ease: 'linear',
         }}
       />
 
-      {/* Tertiary Accent Glow */}
-      <motion.div
-        className="absolute w-[30vw] h-[30vw] md:w-[400px] md:h-[400px] rounded-full blur-[60px] md:blur-[90px] opacity-20 mix-blend-normal"
-        style={{
-          background: 'radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%)',
-          top: '40%',
-          left: '30%',
-        }}
-        animate={{
-          x: [0, 150, -100, 0],
-          y: [0, 150, -50, 0],
-          scale: [1, 0.8, 1.1, 1],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
-      />
+      {/* Tertiary Accent Glow (Desktop only) */}
+      {!isMobile && (
+        <motion.div
+          className="absolute w-[30vw] h-[30vw] md:w-[400px] md:h-[400px] rounded-full blur-[60px] md:blur-[90px] opacity-20 mix-blend-normal"
+          style={{
+            background: 'radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%)',
+            top: '40%',
+            left: '30%',
+          }}
+          animate={{
+            x: [0, 150, -100, 0],
+            y: [0, 150, -50, 0],
+            scale: [1, 0.8, 1.1, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+        />
+      )}
 
-      {/* Free Falling Sketch Icons */}
+      {/* Free Falling Sketch Icons - Optimized for mobile */}
       {(() => {
-        const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-        const icons = isMobile ? fallingIcons.slice(0, 8) : fallingIcons;
-        const mobileOpacity = isMobile ? 'opacity-[0.10]' : 'opacity-[0.20]';
+        const icons = isMobile ? fallingIcons.slice(0, 4) : fallingIcons;
+        const mobileOpacity = isMobile ? 'opacity-[0.08]' : 'opacity-[0.20]';
         return icons.map((item, i) => {
           const Icon = item.Icon;
           return (
@@ -124,24 +127,24 @@ export default function DynamicBackground() {
               style={{ left: item.left, top: '-10%' }}
               animate={{
                 y: ['0vh', '120vh'],
-                rotate: [0, 360],
+                rotate: isMobile ? 0 : [0, 360],
               }}
               transition={{
-                duration: item.duration,
+                duration: isMobile ? item.duration * 1.5 : item.duration,
                 delay: item.delay,
                 repeat: Infinity,
                 ease: 'linear',
               }}
             >
-              <Icon size={isMobile ? Math.min(item.size, 28) : item.size} strokeWidth={1.2} />
+              <Icon size={isMobile ? Math.min(item.size, 24) : item.size} strokeWidth={1.2} />
             </motion.div>
           );
         });
       })()}
 
-      {/* Noise Overlay for texture */}
+      {/* Noise Overlay for texture - Hidden on mobile to prevent GPU filter lag */}
       <div
-        className="absolute inset-0 opacity-[0.03] mix-blend-overlay"
+        className="absolute inset-0 opacity-[0.03] mix-blend-overlay hidden md:block"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
         }}

@@ -35,10 +35,11 @@ export default function ParticleField() {
       canvas.height = height;
     };
 
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    if (isMobile) return;
 
     const createParticles = () => {
-      const maxCount = isMobile ? 25 : 60;
+      const maxCount = 60;
       const count = Math.min(Math.floor(width * height / 20000), maxCount);
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * width,
@@ -134,7 +135,7 @@ export default function ParticleField() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
+      className="fixed inset-0 pointer-events-none z-0 hidden md:block"
       style={{ opacity: 0.6 }}
     />
   );
