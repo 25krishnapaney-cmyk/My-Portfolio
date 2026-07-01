@@ -43,7 +43,7 @@
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.06);
 
   /* Spacing */
-  --section-padding: clamp(2rem, 6vh, 4rem);
+  --section-padding: clamp(1.5rem, 3.5vh, 2.5rem);
   --container-max: 1200px;
   --container-wide: 1400px;
 
