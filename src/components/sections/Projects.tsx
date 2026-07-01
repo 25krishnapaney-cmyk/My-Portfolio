@@ -65,21 +65,24 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Video Player Below the Badge */}
-              <div className="relative w-full rounded-3xl overflow-hidden border border-purple-500/30 shadow-2xl aspect-video bg-neutral-950 flex items-center justify-center">
-                {/* Background Glow Effect */}
-                <div className="absolute -top-32 -left-32 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
-                <div className="absolute -bottom-32 -right-32 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
-                {/* Playing Video */}
-                <video
-                  src="/working.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  suppressHydrationWarning
-                  className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105"
-                />
+              {/* Video Player Below the Badge with Radiating Ambient Glow */}
+              <div className="relative w-full">
+                {/* Ambient Background Glow radiating outside the video frame */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/30 via-pink-500/20 to-cyan-500/30 rounded-[2.5rem] blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none animate-pulse" />
+
+                {/* Video Player Box */}
+                <div className="relative w-full rounded-3xl overflow-hidden border border-purple-500/40 shadow-[0_0_50px_rgba(168,85,247,0.25)] aspect-video bg-neutral-950 flex items-center justify-center z-10">
+                  {/* Playing Video */}
+                  <video
+                    src="/working.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    suppressHydrationWarning
+                    className="w-full h-full object-cover opacity-95 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105"
+                  />
+                </div>
               </div>
             </div>
           </div>
