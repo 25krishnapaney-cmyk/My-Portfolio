@@ -28,9 +28,9 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-[360px] pb-16 lg:pt-[360px] lg:pb-24 overflow-hidden"
+      className="relative pt-32 sm:pt-48 lg:pt-[360px] pb-12 sm:pb-16 lg:pb-24 overflow-hidden"
     >
-      <div className="container relative z-10 mt-16 md:mt-24">
+      <div className="container relative z-10 mt-8 sm:mt-12 md:mt-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Content */}
           <div className="order-2 lg:order-1">
@@ -56,7 +56,7 @@ export default function Hero() {
 
             {/* Subtitle with role rotation */}
             <motion.div
-              className="mb-6 flex flex-wrap items-center gap-x-3 text-xl md:text-2xl font-medium"
+              className="mb-6 flex flex-wrap items-center gap-x-2 sm:gap-x-3 text-lg sm:text-xl md:text-2xl font-medium"
               style={{ color: 'var(--text-secondary)' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ export default function Hero() {
 
             {/* Description */}
             <motion.p
-              className="text-lg mb-10 max-w-xl leading-relaxed"
+              className="text-base sm:text-lg mb-8 sm:mb-10 max-w-xl leading-relaxed"
               style={{ color: 'var(--text-primary)' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -113,7 +113,7 @@ export default function Hero() {
 
               {/* 3D Glass Card Wrapper */}
               <GlassCard 
-                className="relative w-72 h-72 md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px] rounded-3xl overflow-hidden cursor-pointer mx-auto" 
+                className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px] rounded-3xl overflow-hidden cursor-pointer mx-auto" 
                 padding="p-1"
                 hover={true}
                 glow={true}
@@ -126,7 +126,7 @@ export default function Hero() {
                     fill
                     className="object-cover"
                     priority
-                    sizes="(max-width: 768px) 288px, 384px"
+                    unoptimized
                   />
                 </div>
               </GlassCard>

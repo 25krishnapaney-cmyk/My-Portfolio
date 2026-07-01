@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useRef, useEffect, useState } from 'react';
 
 interface GlassCardProps {
   children: ReactNode;
@@ -21,8 +21,15 @@ export default function GlassCard({
   tiltDegree = 3,
 }: GlassCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  const shouldTilt = hover && !isTouchDevice;
 
   const springX = useSpring(mouseX, { stiffness: 200, damping: 30 });
   const springY = useSpring(mouseY, { stiffness: 200, damping: 30 });
@@ -31,7 +38,7 @@ export default function GlassCard({
   const rotateY = useTransform(springX, [-0.5, 0.5], [`-${tiltDegree}deg`, `${tiltDegree}deg`]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current || !hover) return;
+    if (!ref.current || !shouldTilt) return;
     const rect = ref.current.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -48,10 +55,10 @@ export default function GlassCard({
     <motion.div
       ref={ref}
       className={`glass-card ${padding} ${className}`}
-      style={hover ? { rotateX, rotateY, transformPerspective: 1000 } : undefined}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      whileHover={hover ? { scale: 1.01 } : undefined}
+      style={shouldTilt ? { rotateX, rotateY, transformPerspective: 1000 } : undefined}
+      onMouseMove={shouldTilt ? handleMouseMove : undefined}
+      onMouseLeave={shouldTilt ? handleMouseLeave : undefined}
+      whileHover={shouldTilt ? { scale: 1.01 } : undefined}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
     >
       {glow && (

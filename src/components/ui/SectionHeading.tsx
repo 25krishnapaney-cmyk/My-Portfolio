@@ -17,7 +17,7 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <motion.div
-      className={`mb-16 ${align === 'center' ? 'text-center' : 'text-left'}`}
+      className={`mb-10 md:mb-16 ${align === 'center' ? 'text-center' : 'text-left'}`}
       initial={{ opacity: 0, y: 50, rotateX: 35, filter: 'blur(12px)', scale: 0.9 }}
       whileInView={{ opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)', scale: 1 }}
       viewport={{ once: true, margin: '-80px' }}

@@ -38,7 +38,7 @@ export default function Skills() {
               <motion.button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
+                className={`px-3 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
                   activeCategory === category
                     ? 'text-white shadow-lg'
                     : 'glass-subtle hover:bg-[var(--bg-glass)]'
@@ -79,7 +79,7 @@ export default function Skills() {
                   initial={{ opacity: 0, scale: 0.8, rotateY: 40, filter: 'blur(8px)' }}
                   animate={{ opacity: 1, scale: 1, rotateY: 0, filter: 'blur(0px)' }}
                   transition={{ delay: i * 0.06, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ width: '140px', perspective: 800 }}
+                  style={{ width: 'clamp(110px, 22vw, 140px)', perspective: 800 }}
                 >
                   <GlassCard 
                     className="p-4 text-center group cursor-pointer w-full h-full"

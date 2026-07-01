@@ -14,9 +14,9 @@ const socialIcons = [
 
 export default function Footer() {
   return (
-    <footer className="relative py-12 border-t" style={{ borderColor: 'var(--border-primary)' }}>
+    <footer className="relative py-8 md:py-12 border-t" style={{ borderColor: 'var(--border-primary)' }}>
       <div className="container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
           {/* Logo + Quote */}
           <div className="text-center md:text-left">
             <motion.a
@@ -57,7 +57,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div
-          className="mt-8 pt-6 text-center text-sm flex items-center justify-center gap-1"
+          className="mt-6 md:mt-8 pt-6 text-center text-sm flex flex-wrap items-center justify-center gap-1"
           style={{
             borderTop: '1px solid var(--border-subtle)',
             color: 'var(--text-tertiary)',

@@ -7,14 +7,14 @@ export const certifications: Certification[] = [
     date: 'Jul 2026',
     icon: '🤖',
     url: 'https://verify.skilljar.com/c/a7t2w9mntaxr',
-    image: '/claude-code.pdf',
+    image: '/claude-code.jpg',
   },
   {
     title: 'Claude 101',
     issuer: 'Anthropic',
     date: 'Jul 2026',
     icon: '🧠',
-    url: '#',
-    image: '/claude-101.pdf',
+    url: '/claude-101.pdf',
+    image: '/claude-101.jpg',
   },
 ];

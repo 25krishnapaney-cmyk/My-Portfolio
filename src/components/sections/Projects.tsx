@@ -35,9 +35,12 @@ export default function Projects() {
   useGSAP(() => {
     const cards = gsap.utils.toArray<HTMLElement>('.project-card-wrapper');
     
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const rotateAmount = isMobile ? 45 : 90;
+
     // Set initial 3D rotation (locked state)
     gsap.set(cards, {
-      rotateY: 90,
+      rotateY: rotateAmount,
       scale: 0.8,
       opacity: 0,
       filter: 'blur(10px)',
@@ -62,7 +65,7 @@ export default function Projects() {
         // Re-lock if scrolling up past it
         onLeaveBack: () => {
           gsap.to(card, {
-            rotateY: -90,
+            rotateY: -rotateAmount,
             scale: 0.8,
             opacity: 0,
             filter: 'blur(10px)',
@@ -90,7 +93,7 @@ export default function Projects() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
+              className={`px-3 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
                 activeCategory === category
                   ? 'text-white shadow-lg'
                   : 'glass-subtle hover:bg-[var(--bg-glass)]'
@@ -110,7 +113,7 @@ export default function Projects() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
           {filteredProjects.map((project, i) => (
             <div key={project.slug} className="project-card-wrapper" style={{ perspective: '1200px' }}>
-              <div className="glass-card h-full flex flex-col p-6 md:p-8 relative overflow-hidden group rounded-2xl hover:-translate-y-2 transition-transform duration-500">
+              <div className="glass-card h-full flex flex-col p-5 sm:p-6 md:p-8 relative overflow-hidden group rounded-2xl hover:-translate-y-2 transition-transform duration-500">
                 
                 {/* Glow Background Effect on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-purple)]/5 to-[var(--accent-cyan)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

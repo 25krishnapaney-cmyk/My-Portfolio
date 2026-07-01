@@ -35,8 +35,11 @@ export default function ParticleField() {
       canvas.height = height;
     };
 
+    const isMobile = window.innerWidth <= 768;
+
     const createParticles = () => {
-      const count = Math.min(Math.floor(width * height / 20000), 60);
+      const maxCount = isMobile ? 25 : 60;
+      const count = Math.min(Math.floor(width * height / 20000), maxCount);
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -84,23 +87,25 @@ export default function ParticleField() {
         ctx.fill();
       });
 
-      // Draw connections
-      particles.forEach((p1, i) => {
-        particles.slice(i + 1).forEach((p2) => {
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+      // Draw connections (skip on mobile for performance)
+      if (!isMobile) {
+        particles.forEach((p1, i) => {
+          particles.slice(i + 1).forEach((p2) => {
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `hsla(250, 60%, 65%, ${0.06 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `hsla(250, 60%, 65%, ${0.06 * (1 - dist / 120)})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          });
         });
-      });
+      }
 
       animationRef.current = requestAnimationFrame(animate);
     };

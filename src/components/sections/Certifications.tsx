@@ -25,7 +25,7 @@ export default function Certifications() {
             {certifications.map((cert, i) => (
               <motion.div
                 key={i}
-                className="glass-card p-6 w-[280px] sm:w-[320px] flex flex-col items-center text-center snap-center cursor-pointer flex-shrink-0"
+                className="glass-card p-5 sm:p-6 w-[260px] sm:w-[320px] flex flex-col items-center text-center snap-center cursor-pointer flex-shrink-0"
                 whileHover={{ scale: 1.03, y: -4 }}
                 onClick={() => setSelectedCert(i)}
                 initial={{ opacity: 0, x: 40, rotateY: 30, filter: 'blur(8px)' }}
@@ -92,7 +92,7 @@ export default function Certifications() {
                 onClick={() => setSelectedCert(null)}
               />
               <motion.div
-                className="relative glass-strong rounded-3xl p-8 max-w-md w-full text-center"
+                className="relative glass-strong rounded-3xl p-5 sm:p-8 max-w-sm sm:max-w-md w-full text-center"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}

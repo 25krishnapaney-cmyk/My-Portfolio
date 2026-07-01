@@ -36,7 +36,7 @@ export default function Experience() {
         <div className="flex flex-col items-center w-full gap-12">
           {experiences.map((exp, i) => (
             <ScrollReveal key={i} delay={i * 0.1} className="max-w-3xl" reveal3dType={i % 2 === 0 ? 'unfold' : 'tilt'} direction={i % 2 === 0 ? 'left' : 'right'}>
-              <div className="glass-card p-8 flex flex-col items-center text-center w-full">
+              <div className="glass-card p-5 sm:p-8 flex flex-col items-center text-center w-full">
                 <div className="flex flex-col items-center gap-3 mb-4">
                   <span
                     className="w-12 h-12 rounded-2xl flex items-center justify-center mb-1"

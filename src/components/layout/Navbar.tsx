@@ -64,7 +64,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             {/* Mobile Menu Button */}
             <motion.button
-              className="w-10 h-10 rounded-full glass-subtle flex items-center justify-center cursor-pointer"
+              className="w-11 h-11 rounded-full glass-subtle flex items-center justify-center cursor-pointer"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               whileTap={{ scale: 0.9 }}
               aria-label="Toggle menu"
@@ -79,7 +79,7 @@ export default function Navbar() {
             {/* Theme Toggle Button */}
             {mounted && (
               <motion.button
-                className="w-10 h-10 rounded-full glass-subtle flex items-center justify-center cursor-pointer"
+                className="w-11 h-11 rounded-full glass-subtle flex items-center justify-center cursor-pointer"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                 whileTap={{ scale: 0.9 }}
                 aria-label="Toggle theme"
@@ -115,7 +115,7 @@ export default function Navbar() {
 
             {/* Menu Panel */}
             <motion.nav
-              className="absolute right-0 top-0 bottom-0 w-72 glass-strong p-8 pt-40 pb-8 flex flex-col gap-2 overflow-y-auto"
+              className="absolute right-0 top-0 bottom-0 w-[85vw] max-w-xs glass-strong p-8 pt-40 pb-8 flex flex-col gap-2 overflow-y-auto"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}

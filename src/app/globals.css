@@ -445,6 +445,15 @@ a {
 }
 
 /* ---------- Responsive ---------- */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  :root {
+    --section-padding: clamp(1.75rem, 5vh, 3rem);
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   :root {
     --section-padding: clamp(1.5rem, 4vh, 2.5rem);
@@ -454,6 +463,44 @@ a {
   .cursor-trail {
     display: none !important;
   }
+
+  .glass-card:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Small phone */
+@media (max-width: 480px) {
+  :root {
+    --section-padding: clamp(1.25rem, 3vh, 2rem);
+    --font-hero: clamp(2rem, 10vw, 3.5rem);
+    --font-h1: clamp(1.6rem, 6vw, 2.5rem);
+    --font-h2: clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .container,
+  .container-wide {
+    padding: 0 1rem;
+  }
+}
+
+/* Touch-friendly tap targets */
+@media (pointer: coarse) {
+  button,
+  a,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+}
+
+/* ---------- Scrollbar Hide Utility ---------- */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* ---------- Page Transition ---------- */

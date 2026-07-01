@@ -19,15 +19,14 @@ export default function About() {
         {/* Main About Card */}
         <ScrollReveal className="flex justify-center w-full" reveal3dType="flip">
           <GlassCard className="w-full max-w-4xl">
-            <div className="space-y-6 text-center" style={{ padding: '3rem 2rem' }}>
-              <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              I'm <strong style={{ color: 'var(--text-primary)' }}>Krishna</strong>,
-              a Computer Science Engineering student driven by curiosity and a passion for technology.
+            <div className="space-y-4 sm:space-y-6 text-center" style={{ padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem)' }}>
+              <p className="text-base sm:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              I'm <strong style={{ color: 'var(--text-primary)' }}>Krishna</strong>, aka <strong style={{ color: 'var(--text-primary)' }}>Nady</strong>, a Computer Science Engineering student driven by curiosity and a passion for technology.
               What started with writing my first lines of code has grown into an exciting journey of exploring
               Artificial Intelligence, Agentic AI, full-stack development, and modern software engineering.
               </p>
 
-              <p className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              <p className="text-base sm:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               Beyond development, I'm equally passionate about <strong style={{ color: 'var(--text-primary)' }}>Gaming creating 
                 tech-focused content, and streaming.</strong>,
               I love sharing my learning journey, exploring the latest innovations, and connecting with people who are 
@@ -52,8 +51,8 @@ export default function About() {
           </GlassCard>
         </ScrollReveal>
 
-        <div style={{ height: '4rem', width: '100%' }}></div>
-
+        <div style={{ height: 'clamp(2rem, 4vw, 4rem)', width: '100%' }}></div>
+o
         {/* Personality Cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {personalityTraits.map((trait, i) => (

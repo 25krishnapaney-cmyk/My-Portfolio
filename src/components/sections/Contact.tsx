@@ -44,7 +44,7 @@ export default function Contact() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-center items-stretch gap-8">
           {/* Contact Info */}
           <ScrollReveal className="w-full md:w-2/5" reveal3dType="unfold" direction="left">
-            <div className="glass-card h-full" style={{ padding: '2.5rem' }}>
+            <div className="glass-card h-full" style={{ padding: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
               <h3
                 className="text-lg font-semibold mb-6"
                 style={{ color: 'var(--text-primary)' }}
@@ -105,7 +105,7 @@ export default function Contact() {
 
           {/* Contact Form */}
           <ScrollReveal className="w-full md:w-3/5" delay={0.1} reveal3dType="tilt" direction="right">
-            <form onSubmit={handleSubmit} className="glass-card h-full flex flex-col" style={{ padding: '2.5rem' }}>
+            <form onSubmit={handleSubmit} className="glass-card h-full flex flex-col" style={{ padding: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
               <h3
                 className="text-lg font-semibold mb-6"
                 style={{ color: 'var(--text-primary)' }}
@@ -133,7 +133,7 @@ export default function Contact() {
                       suppressHydrationWarning
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="  Your name"
+                      placeholder="Your name"
                       required
                       className="w-full px-4 py-3 text-sm outline-none bg-transparent"
                       style={{ color: 'var(--text-primary)' }}
@@ -160,7 +160,7 @@ export default function Contact() {
                       suppressHydrationWarning
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="  YourEmail@example.com"
+                      placeholder="YourEmail@example.com"
                       required
                       className="w-full px-4 py-3 text-sm outline-none bg-transparent"
                       style={{ color: 'var(--text-primary)' }}
@@ -186,7 +186,7 @@ export default function Contact() {
                       suppressHydrationWarning
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      placeholder="    Tell me about your project or just say hello..."
+                      placeholder="Tell me about your project or just say hello..."
                       required
                       rows={4}
                       className="w-full px-4 py-3 text-sm outline-none resize-none bg-transparent"

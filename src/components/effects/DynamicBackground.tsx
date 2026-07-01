@@ -111,28 +111,33 @@ export default function DynamicBackground() {
       />
 
       {/* Free Falling Sketch Icons */}
-      {fallingIcons.map((item, i) => {
-        const Icon = item.Icon;
-        return (
-          <motion.div
-            key={i}
-            className="absolute opacity-[0.20] text-[var(--text-primary)]"
-            style={{ left: item.left, top: '-10%' }}
-            animate={{
-              y: ['0vh', '120vh'],
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: item.duration,
-              delay: item.delay,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-          >
-            <Icon size={item.size} strokeWidth={1.2} />
-          </motion.div>
-        );
-      })}
+      {(() => {
+        const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+        const icons = isMobile ? fallingIcons.slice(0, 8) : fallingIcons;
+        const mobileOpacity = isMobile ? 'opacity-[0.10]' : 'opacity-[0.20]';
+        return icons.map((item, i) => {
+          const Icon = item.Icon;
+          return (
+            <motion.div
+              key={i}
+              className={`absolute ${mobileOpacity} text-[var(--text-primary)]`}
+              style={{ left: item.left, top: '-10%' }}
+              animate={{
+                y: ['0vh', '120vh'],
+                rotate: [0, 360],
+              }}
+              transition={{
+                duration: item.duration,
+                delay: item.delay,
+                repeat: Infinity,
+                ease: 'linear',
+              }}
+            >
+              <Icon size={isMobile ? Math.min(item.size, 28) : item.size} strokeWidth={1.2} />
+            </motion.div>
+          );
+        });
+      })()}
 
       {/* Noise Overlay for texture */}
       <div
