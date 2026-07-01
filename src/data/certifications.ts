@@ -47,5 +47,3 @@ export const certifications: Certification[] = [
     url: 'https://g.dev/25krishnapaney',
   },
 ];
-
-
