@@ -153,7 +153,12 @@ export default function Contact() {
                     }}>
                     <input
                       id="name"
+                      name="contact-name"
                       type="text"
+                      autoComplete="off"
+                      data-1p-ignore
+                      data-lpignore="true"
+                      data-form-type="other"
                       suppressHydrationWarning
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -180,7 +185,12 @@ export default function Contact() {
                     }}>
                     <input
                       id="email"
+                      name="contact-email"
                       type="email"
+                      autoComplete="off"
+                      data-1p-ignore
+                      data-lpignore="true"
+                      data-form-type="other"
                       suppressHydrationWarning
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
