@@ -90,7 +90,7 @@ export default function Projects() {
 
                 {/* Coming Soon Title */}
                 <h3 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-3 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg">
-                  Coming Soon...
+                    Coming Soon..
                 </h3>
 
                 {/* Status Badge */}
