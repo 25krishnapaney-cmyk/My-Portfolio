@@ -26,7 +26,7 @@ export default function GlassCard({
   const mouseY = useMotionValue(0);
 
   useEffect(() => {
-    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    setTimeout(() => setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0), 0);
   }, []);
 
   const shouldTilt = hover && !isTouchDevice;

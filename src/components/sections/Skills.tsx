@@ -6,7 +6,6 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import GlassCard from '@/components/ui/GlassCard';
 import { skills, skillCategories } from '@/data/skills';
-import type { SkillCategory } from '@/types';
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState<string>('Programming');

@@ -21,13 +21,13 @@ export default function About() {
           <GlassCard className="w-full max-w-4xl">
             <div className="space-y-4 sm:space-y-6 text-center" style={{ padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem)' }}>
               <p className="text-base sm:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              I'm <strong style={{ color: 'var(--text-primary)' }}>Krishna</strong>, a Computer Science Engineering student driven by curiosity and a passion for technology.
+              I&apos;m <strong style={{ color: 'var(--text-primary)' }}>Krishna</strong>, a Computer Science Engineering student driven by curiosity and a passion for technology.
               What started with writing my first lines of code has grown into an exciting journey of exploring
               Artificial Intelligence, Agentic AI, full-stack development, and modern software engineering.
               </p>
 
               <p className="text-base sm:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              Beyond development, I'm equally passionate about <strong style={{ color: 'var(--text-primary)' }}>gaming, creating 
+              Beyond development, I&apos;m equally passionate about <strong style={{ color: 'var(--text-primary)' }}>gaming, creating 
                 tech-focused content, and streaming.</strong> I love sharing my learning journey, exploring the latest innovations, and connecting with people who are 
               just as excited about technology as I am. These hobbies fuel my creativity and inspire me to approach 
               challenges from different perspectives.

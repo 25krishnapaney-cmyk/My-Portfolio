@@ -18,7 +18,7 @@ export default function CustomCursor() {
 
   useEffect(() => {
     const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    setIsTouchDevice(isTouch);
+    setTimeout(() => setIsTouchDevice(isTouch), 0);
     if (isTouch) return;
 
     const moveCursor = (e: MouseEvent) => {

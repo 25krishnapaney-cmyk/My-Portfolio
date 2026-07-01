@@ -86,7 +86,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
             >
-              Curiosity fuels everything I do. I'm a Computer Science Engineering student passionate about Agentic AI,
+              Curiosity fuels everything I do. I&apos;m a Computer Science Engineering student passionate about Agentic AI,
               full-stack development, and building intelligent digital experiences that solve real-world problems.
               Beyond engineering, I enjoy gaming, creating tech-focused content, and streaming my journey—sharing
               what I learn while constantly exploring, building, and pushing myself to grow.
