@@ -68,9 +68,9 @@ export default function Skills() {
                 justifyContent: 'center',
                 gap: '1rem'
               }}
-              initial={{ opacity: 0, y: 20, filter: 'blur(12px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -20, filter: 'blur(8px)' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
               {filteredSkills.map((skill, i) => {
@@ -78,8 +78,8 @@ export default function Skills() {
                 return (
                 <motion.div
                   key={skill.name}
-                  initial={isMobile ? { opacity: 0, y: 15 } : { opacity: 0, scale: 0.8, rotateY: 40, filter: 'blur(8px)' }}
-                  animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, scale: 1, rotateY: 0, filter: 'blur(0px)' }}
+                  initial={isMobile ? { opacity: 0, y: 15 } : { opacity: 0, scale: 0.8, rotateY: 40 }}
+                  animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, scale: 1, rotateY: 0 }}
                   transition={{ delay: i * 0.04, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   style={{ width: 'clamp(110px, 22vw, 140px)', perspective: isMobile ? 'none' : 800 }}
                 >
