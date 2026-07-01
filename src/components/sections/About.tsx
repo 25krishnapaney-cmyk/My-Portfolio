@@ -52,7 +52,7 @@ export default function About() {
         </ScrollReveal>
 
         <div style={{ height: 'clamp(2rem, 4vw, 4rem)', width: '100%' }}></div>
-o
+
         {/* Personality Cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {personalityTraits.map((trait, i) => (

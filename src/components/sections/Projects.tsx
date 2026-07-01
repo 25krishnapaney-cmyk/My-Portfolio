@@ -35,23 +35,23 @@ export default function Projects() {
   useGSAP(() => {
     const cards = gsap.utils.toArray<HTMLElement>('.project-card-wrapper');
     
-    const isTouchOrMobile = typeof window !== 'undefined' && (window.innerWidth <= 1024 || 'ontouchstart' in window);
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
     // Set initial 3D rotation (locked state)
     gsap.set(cards, {
-      rotateY: isTouchOrMobile ? 0 : 60,
-      scale: isTouchOrMobile ? 0.95 : 0.85,
+      rotateY: isMobile ? 0 : 60,
+      scale: isMobile ? 0.95 : 0.85,
       opacity: 0,
-      y: isTouchOrMobile ? 30 : 0,
-      filter: isTouchOrMobile ? 'none' : 'blur(10px)',
-      transformPerspective: isTouchOrMobile ? 'none' : 1200,
+      y: isMobile ? 30 : 0,
+      filter: isMobile ? 'none' : 'blur(10px)',
+      transformPerspective: isMobile ? 'none' : 1200,
     });
 
     // Create a ScrollTrigger for each card to "unlock" it once
     cards.forEach((card, index) => {
       ScrollTrigger.create({
         trigger: card,
-        start: isTouchOrMobile ? 'top 95%' : 'top 85%',
+        start: isMobile ? 'top 95%' : 'top 85%',
         once: true,
         onEnter: () => {
           gsap.to(card, {
@@ -60,8 +60,8 @@ export default function Projects() {
             opacity: 1,
             y: 0,
             filter: 'none',
-            duration: isTouchOrMobile ? 0.5 : 0.8,
-            ease: isTouchOrMobile ? 'power2.out' : 'back.out(1.2)',
+            duration: isMobile ? 0.5 : 0.8,
+            ease: isMobile ? 'power2.out' : 'back.out(1.2)',
           });
         },
       });
