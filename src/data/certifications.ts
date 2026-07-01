@@ -17,4 +17,12 @@ export const certifications: Certification[] = [
     url: '/claude-101.pdf',
     image: '/claude-101.jpg',
   },
+  {
+    title: 'OpenAI Fundamentals',
+    issuer: 'OpenAI',
+    date: 'June 2026',
+    icon: '⚡',
+    url: '/openai.jpg',
+    image: '/openai.jpg',
+  },
 ];

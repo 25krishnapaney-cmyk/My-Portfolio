@@ -21,7 +21,7 @@ export default function About() {
           <GlassCard className="w-full max-w-4xl">
             <div className="space-y-4 sm:space-y-6 text-center" style={{ padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem)' }}>
               <p className="text-base sm:text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              I'm <strong style={{ color: 'var(--text-primary)' }}>Krishna</strong>, aka <strong style={{ color: 'var(--text-primary)' }}>Nady</strong>, a Computer Science Engineering student driven by curiosity and a passion for technology.
+              I'm <strong style={{ color: 'var(--text-primary)' }}>Krishna</strong>, a Computer Science Engineering student driven by curiosity and a passion for technology.
               What started with writing my first lines of code has grown into an exciting journey of exploring
               Artificial Intelligence, Agentic AI, full-stack development, and modern software engineering.
               </p>
