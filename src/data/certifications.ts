@@ -2,6 +2,14 @@ import { Certification } from '@/types';
 
 export const certifications: Certification[] = [
   {
+    title: 'Deloitte Certification',
+    issuer: 'Deloitte',
+    date: '2026',
+    icon: '💼',
+    url: '/deloite.jpg',
+    image: '/deloite.jpg',
+  },
+  {
     title: 'Claude Code in Action',
     issuer: 'Anthropic',
     date: 'June 2026',
