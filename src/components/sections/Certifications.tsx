@@ -21,21 +21,22 @@ export default function Certifications() {
 
         {/* Stacked Grid layout matching Achievements */}
         <div className="flex justify-center w-full">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl w-full">
-            {certifications.map((cert, i) => (
-              <ScrollReveal key={i} delay={i * 0.08} reveal3dType={i % 3 === 0 ? 'flip' : i % 3 === 1 ? 'tilt' : 'unfold'} direction={i % 2 === 0 ? 'left' : 'right'}>
-                <motion.div
-                  className="glass-card p-6 text-center group cursor-pointer h-full flex flex-col justify-between"
-                  whileHover={{
-                    scale: 1.03,
-                    y: -4,
-                    boxShadow: '0 20px 40px rgba(139, 92, 246, 0.1)',
-                  }}
-                  onClick={() => setSelectedCert(i)}
-                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <div>
-                    {cert.image ? (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl w-full">
+            {certifications.map((cert, i) => {
+              if (!cert.image) return null;
+              return (
+                <ScrollReveal key={i} delay={i * 0.08} reveal3dType={i % 3 === 0 ? 'flip' : i % 3 === 1 ? 'tilt' : 'unfold'} direction={i % 2 === 0 ? 'left' : 'right'}>
+                  <motion.div
+                    className="glass-card p-6 text-center group cursor-pointer h-full flex flex-col justify-between"
+                    whileHover={{
+                      scale: 1.03,
+                      y: -4,
+                      boxShadow: '0 20px 40px rgba(139, 92, 246, 0.1)',
+                    }}
+                    onClick={() => setSelectedCert(i)}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <div>
                       <div className="w-full h-36 mb-4 rounded-lg overflow-hidden relative bg-black/40 flex items-center justify-center pointer-events-none shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]" style={{ transform: 'translateZ(0)' }}>
                         <div className="absolute inset-0 border border-white/20 rounded-lg z-20 mix-blend-overlay shadow-[inset_0_0_10px_rgba(255,255,255,0.1)] pointer-events-none" />
                         {cert.image.endsWith('.pdf') ? (
@@ -58,65 +59,118 @@ export default function Certifications() {
                           />
                         )}
                       </div>
-                    ) : (
-                      <motion.span
-                        className="text-4xl mb-4 block"
-                        whileHover={{ scale: 1.2 }}
-                        transition={{ type: 'spring', stiffness: 400 }}
-                      >
-                        {cert.icon}
-                      </motion.span>
-                    )}
 
-                    <h3
-                      className="text-base font-semibold mb-2"
-                      style={{ color: 'var(--text-primary)' }}
-                    >
-                      {cert.title}
-                    </h3>
-                  </div>
-
-                  <div className="space-y-3 pt-3">
-                    <div className="flex items-center justify-center gap-2">
-                      <span
-                        className="px-2.5 py-0.5 rounded-full text-xs font-medium glass-subtle"
-                        style={{ color: 'var(--text-tertiary)' }}
+                      <h3
+                        className="text-base font-semibold mb-2"
+                        style={{ color: 'var(--text-primary)' }}
                       >
-                        {cert.issuer}
-                      </span>
-                      <span
-                        className="text-xs"
-                        style={{ color: 'var(--text-tertiary)' }}
-                      >
-                        {cert.date}
-                      </span>
+                        {cert.title}
+                      </h3>
                     </div>
 
-                    {cert.url && !cert.image && (
-                      <a
-                        href={cert.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className={`inline-flex items-center justify-center gap-1.5 text-xs font-medium transition-colors pt-1 ${cert.url.includes('google') || cert.url.includes('g.dev')
-                            ? 'text-cyan-400 hover:text-cyan-300'
-                            : 'text-orange-400 hover:text-orange-300'
-                          }`}
-                      >
-                        <span>
-                          {cert.url.includes('credly')
-                            ? 'Verify on Credly'
-                            : cert.url.includes('google') || cert.url.includes('g.dev')
-                              ? 'Verify Google Profile'
-                              : 'Verify Credential'}
+                    <div className="space-y-3 pt-3">
+                      <div className="flex items-center justify-center gap-2">
+                        <span
+                          className="px-2.5 py-0.5 rounded-full text-xs font-medium glass-subtle"
+                          style={{ color: 'var(--text-tertiary)' }}
+                        >
+                          {cert.issuer}
                         </span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    )}
-                  </div>
-                </motion.div>
-              </ScrollReveal>
-            ))}
+                        <span
+                          className="text-xs"
+                          style={{ color: 'var(--text-tertiary)' }}
+                        >
+                          {cert.date}
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Verified Credential Profiles & Badges Section */}
+        <div className="mt-16 w-full flex flex-col items-center">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+              Verified Credential Profiles
+            </h3>
+            <p className="text-neutral-400 text-sm sm:text-base mt-2">
+              Public verification of cloud certifications, technical badges, and professional credentials.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl w-full">
+            {certifications
+              .filter((cert) => !cert.image)
+              .map((cert, i) => (
+                <ScrollReveal key={i} delay={i * 0.1} reveal3dType="tilt" direction="up">
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="glass p-6 sm:p-7 rounded-3xl border border-purple-500/30 shadow-[0_0_30px_rgba(168,85,247,0.15)] backdrop-blur-md text-center flex flex-col items-center justify-between h-full group hover:border-purple-500/50 hover:scale-[1.03] hover:-translate-y-1 transition-all duration-300 block"
+                  >
+                    <div>
+                      {/* Ribbon / Medal Icon */}
+                      <div className="relative mb-4 flex flex-col items-center">
+                        {cert.title.includes('Credly') ? (
+                          <>
+                            <div className="flex justify-center -mb-2">
+                              <div className="w-3 h-5 bg-blue-500 rounded-t-sm transform -rotate-12 translate-x-1" />
+                              <div className="w-3 h-6 bg-purple-500 rounded-t-sm z-10" />
+                              <div className="w-3 h-5 bg-pink-500 rounded-t-sm transform rotate-12 -translate-x-1" />
+                            </div>
+                            <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-amber-500 via-yellow-400 to-amber-600 p-1 shadow-lg flex items-center justify-center z-20 group-hover:scale-110 transition-transform duration-300">
+                              <div className="w-full h-full rounded-full bg-amber-950/90 border border-amber-300/40 flex items-center justify-center">
+                                <Award className="w-7 h-7 text-amber-400 drop-shadow" />
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-500/20 to-cyan-500/20 border border-purple-500/40 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <span className="text-3xl">{cert.icon}</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Title */}
+                      <h4 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-tight">
+                        {cert.title}
+                      </h4>
+
+                      {/* Subtitle / Description */}
+                      <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed mb-5 max-w-xs mx-auto">
+                        {cert.subtitle || `Official verification and active credential profile by ${cert.issuer}.`}
+                      </p>
+                    </div>
+
+                    <div className="w-full flex flex-col items-center gap-5 pt-2">
+                      {/* Pills */}
+                      {cert.pills && (
+                        <div className="flex flex-wrap justify-center gap-2">
+                          {cert.pills.map((pill, idx) => (
+                            <span
+                              key={idx}
+                              className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-neutral-300 shadow-inner"
+                            >
+                              {pill}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Bottom Link */}
+                      <div className="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors pt-2 border-t border-white/10 w-full justify-center">
+                        <span>{cert.linkText || 'Verify Credential'}</span>
+                        <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+                      </div>
+                    </div>
+                  </a>
+                </ScrollReveal>
+              ))}
           </div>
         </div>
 

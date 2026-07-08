@@ -101,6 +101,9 @@ export interface Certification {
   url?: string;
   icon: string;
   image?: string;
+  subtitle?: string;
+  pills?: string[];
+  linkText?: string;
 }
 
 export interface PersonalityTrait {

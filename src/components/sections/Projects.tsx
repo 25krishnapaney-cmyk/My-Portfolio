@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import SectionHeading from '@/components/ui/SectionHeading';
+import { ExternalLink } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -49,15 +50,16 @@ export default function Projects() {
   }, []);
 
   useGSAP(() => {
-    const banner = gsap.utils.toArray<HTMLElement>('.coming-soon-banner');
-    
-    gsap.fromTo(banner, 
+    const elements = gsap.utils.toArray<HTMLElement>('.featured-project-card, .coming-soon-banner');
+
+    gsap.fromTo(elements,
       { scale: 0.9, opacity: 0, y: 30 },
-      { 
-        scale: 1, 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.8, 
+      {
+        scale: 1,
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
         ease: 'back.out(1.2)',
         scrollTrigger: {
           trigger: containerRef.current,
@@ -77,6 +79,60 @@ export default function Projects() {
           subtitle="A showcase of innovative AI, cloud, and web applications."
         />
 
+        {/* Featured Live Project Card (Small Square Shape as Link) */}
+        <div className="w-full flex justify-center items-center mt-10 mb-12 px-4 sm:px-6">
+          <a
+            href="https://file-grave.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="featured-project-card glass w-72 h-72 sm:w-80 sm:h-80 rounded-3xl border border-purple-500/30 shadow-[0_0_30px_rgba(168,85,247,0.2)] backdrop-blur-xl relative overflow-hidden group hover:border-purple-500/50 hover:scale-[1.03] transition-all duration-500 flex flex-col justify-between p-6 block cursor-pointer"
+          >
+            {/* Ambient Background Glow */}
+            <div className="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-cyan-500/20 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
+
+            {/* Top Row: Favicon Logo & Badge */}
+            <div className="relative z-10 flex items-center justify-between gap-2 w-full">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-500/20 to-cyan-500/20 border border-purple-500/40 flex items-center justify-center shadow-sm shrink-0 overflow-hidden p-1.5">
+                <img
+                  src="/favicon.ico"
+                  alt="File Grave Favicon Logo"
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://file-grave.vercel.app/favicon.ico';
+                  }}
+                />
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-purple-500/20 border border-purple-500/30 text-purple-200">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+                </span>
+                <span>File Converter</span>
+              </div>
+            </div>
+
+            {/* Middle: Title & Description */}
+            <div className="relative z-10 flex flex-col justify-center text-left my-auto overflow-hidden">
+              <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight mb-1.5 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent truncate">
+                File Grave
+              </h3>
+              <p className="text-neutral-300 text-xs leading-relaxed line-clamp-3">
+                A modern, lightning-fast file conversion web app designed for seamless format transformations and effortless workflows.
+              </p>
+            </div>
+
+            {/* Bottom: Action Button Visual */}
+            <div className="relative z-10 w-full pt-2">
+              <div
+                className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl font-semibold text-xs bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 text-white shadow-[0_0_15px_rgba(168,85,247,0.4)] group-hover:shadow-[0_0_25px_rgba(168,85,247,0.7)] group-hover:scale-[1.02] active:scale-98 transition-all duration-300"
+              >
+                <span>Launch Converter</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </div>
+            </div>
+          </a>
+        </div>
+
         {/* Coming Soon & Under Construction Video Banner */}
         <div className="w-full flex justify-center items-center mt-8 px-4">
           <div className="w-full max-w-4xl coming-soon-banner">
@@ -90,7 +146,7 @@ export default function Projects() {
 
                 {/* Coming Soon Title */}
                 <h3 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-3 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg">
-                    Coming Soon..
+                  More Coming Soon..
                 </h3>
 
                 {/* Status Badge */}

@@ -2,6 +2,17 @@ import { Project } from '@/types';
 
 export const projects: Project[] = [
   {
+    slug: 'file-grave',
+    title: 'File Grave',
+    shortDescription: 'A modern, lightning-fast file conversion web application designed for seamless format transformations.',
+    description: 'An intuitive web application for effortless file conversion across various formats. Built with modern web technologies for high performance, security, and a seamless user experience.',
+    image: '/projects/file-grave.jpg',
+    category: 'Web Development',
+    featured: true,
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'File Conversion', 'Vercel'],
+    demo: 'https://file-grave.vercel.app/',
+  },
+  {
     slug: 'ai-agent-ecosystem',
     title: 'AI Agent Ecosystem',
     shortDescription: 'An autonomous multi-agent framework powered by large language models for automated reasoning, code generation, and complex workflow execution.',
