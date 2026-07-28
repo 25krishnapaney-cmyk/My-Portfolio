@@ -18,7 +18,7 @@ export const certifications: Certification[] = [
     image: '/claude-code.jpg',
   },
   {
-    title: 'Claude 101',
+    title: 'Claude-101',
     issuer: 'Anthropic',
     date: 'June 2026',
     icon: '🧠',
