@@ -79,20 +79,20 @@ export default function Projects() {
           subtitle="A showcase of innovative AI, cloud, and web applications."
         />
 
-        {/* Featured Live Project Card (Small Square Shape as Link) */}
+        {/* Featured Live Project Card (Round Circle Shape as Link) */}
         <div className="w-full flex justify-center items-center mt-10 mb-12 px-4 sm:px-6">
           <a
             href="https://file-grave.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="featured-project-card glass w-72 h-72 sm:w-80 sm:h-80 rounded-3xl border border-purple-500/30 shadow-[0_0_30px_rgba(168,85,247,0.2)] backdrop-blur-xl relative overflow-hidden group hover:border-purple-500/50 hover:scale-[1.03] transition-all duration-500 flex flex-col justify-between p-6 block cursor-pointer"
+            className="featured-project-card glass w-72 h-72 sm:w-84 sm:h-84 aspect-square rounded-full border border-purple-500/30 shadow-[0_0_35px_rgba(168,85,247,0.25)] backdrop-blur-xl relative overflow-hidden group hover:border-purple-500/50 hover:scale-[1.03] transition-all duration-500 flex flex-col items-center justify-between p-7 sm:p-8 block cursor-pointer text-center"
           >
             {/* Ambient Background Glow */}
             <div className="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-cyan-500/20 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
 
             {/* Top Row: Favicon Logo & Badge */}
-            <div className="relative z-10 flex items-center justify-between gap-2 w-full">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-500/20 to-cyan-500/20 border border-purple-500/40 flex items-center justify-center shadow-sm shrink-0 overflow-hidden p-1.5">
+            <div className="relative z-10 flex items-center justify-center gap-2.5 w-full">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500/20 to-cyan-500/20 border border-purple-500/40 flex items-center justify-center shadow-sm shrink-0 overflow-hidden p-1.5">
                 <img
                   src="/favicon.ico"
                   alt="File Grave Favicon Logo"
@@ -112,19 +112,19 @@ export default function Projects() {
             </div>
 
             {/* Middle: Title & Description */}
-            <div className="relative z-10 flex flex-col justify-center text-left my-auto overflow-hidden">
+            <div className="relative z-10 flex flex-col items-center justify-center my-auto overflow-hidden px-2">
               <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight mb-1.5 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent truncate">
                 File Grave
               </h3>
-              <p className="text-neutral-300 text-xs leading-relaxed line-clamp-3">
+              <p className="text-neutral-300 text-xs leading-relaxed line-clamp-3 max-w-[210px]">
                 A modern, lightning-fast file conversion web app designed for seamless format transformations and effortless workflows.
               </p>
             </div>
 
             {/* Bottom: Action Button Visual */}
-            <div className="relative z-10 w-full pt-2">
+            <div className="relative z-10 w-full flex justify-center pt-1">
               <div
-                className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl font-semibold text-xs bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 text-white shadow-[0_0_15px_rgba(168,85,247,0.4)] group-hover:shadow-[0_0_25px_rgba(168,85,247,0.7)] group-hover:scale-[1.02] active:scale-98 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full font-semibold text-xs bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 text-white shadow-[0_0_15px_rgba(168,85,247,0.4)] group-hover:shadow-[0_0_25px_rgba(168,85,247,0.7)] group-hover:scale-[1.02] active:scale-98 transition-all duration-300"
               >
                 <span>Launch Converter</span>
                 <ExternalLink className="w-3.5 h-3.5" />

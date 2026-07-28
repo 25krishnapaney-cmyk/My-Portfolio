@@ -22,7 +22,7 @@ export const certifications: Certification[] = [
     issuer: 'Anthropic',
     date: 'June 2026',
     icon: '🧠',
-    url: '/claude-101.pdf',
+    url: 'https://verify.skilljar.com/c/awjeydjufyn5',
     image: '/claude-101.jpg',
   },
   {

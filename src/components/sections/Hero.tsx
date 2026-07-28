@@ -121,7 +121,7 @@ export default function Hero() {
               >
                 <div className="w-full h-full rounded-3xl overflow-hidden relative">
                   <Image
-                    src="/foto.png"
+                    src="/foto.webp"
                     alt="Krishna - Computer Science Student & AI Builder"
                     fill
                     className="object-cover"
